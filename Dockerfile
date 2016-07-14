@@ -11,7 +11,10 @@ ADD docker_files/cdh_cloudera.list /etc/apt/sources.list.d/
 ADD docker_files/cloudera.pref /etc/apt/preferences.d/
 ADD docker_files/archive.key /tmp/
 
-RUN apt-key add /tmp/archive.key && apt-get update
+RUN apt-key add /tmp/archive.key \
+ && apt-get clean \
+ && apt-get autoclean \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*
 
 # Define default command.
 CMD ["/bin/bash"]
