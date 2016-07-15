@@ -14,7 +14,7 @@ ADD docker_files/archive.key /tmp/
 RUN apt-key add /tmp/archive.key \
  && apt-get clean \
  && apt-get autoclean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*
 
 # Define default command.
 CMD ["/bin/bash"]
