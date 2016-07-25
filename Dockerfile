@@ -13,7 +13,7 @@ ADD docker_files/archive.key /tmp/
 
 RUN apt-key add /tmp/archive.key \
  && apt-get update \
- && apt-get -y install python-pip pkg-config python-dev
+ && apt-get -y install python-pip pkg-config python-dev \
  && apt-get clean \
  && apt-get autoclean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*.deb
