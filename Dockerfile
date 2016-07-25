@@ -12,6 +12,7 @@ ADD docker_files/cloudera.pref /etc/apt/preferences.d/
 ADD docker_files/archive.key /tmp/
 
 RUN apt-key add /tmp/archive.key \
+ && apt-get update \
  && apt-get -y install python-pip pkg-config python-dev
  && apt-get clean \
  && apt-get autoclean \
