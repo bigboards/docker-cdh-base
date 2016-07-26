@@ -18,9 +18,10 @@ RUN apt-key add /tmp/archive.key \
  && apt-get autoclean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*.deb
 
-RUN pip install numpy ConfigParser requests pandas scikit-learn sqlalchemy seaborn ibis hadoopy hdfs pyhive impala py4j solrpy kafka-python flumelogger json matplotlib
+# These libs still give errors when installing: json matplotlib
+# And these could not be found yet: h2o lightning
+RUN pip install numpy ConfigParser requests pandas scikit-learn sqlalchemy seaborn ibis hadoopy hdfs pyhive impala py4j solrpy kafka-python flumelogger
 
-# h2o py4j json impala solrpy ibis lightning
 ENV PATH /opt/anaconda/bin:$PATH
 
 # Define default command.
