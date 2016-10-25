@@ -13,14 +13,15 @@ ADD docker_files/archive.key /tmp/
 
 RUN apt-key add /tmp/archive.key \
  && apt-get update \
- && apt-get -y install python-pip pkg-config python-dev \
+ && apt-get install -y build-essential gfortran python libssl-dev libffi-dev libblas-dev \ 
+                       liblapack-dev libatlas-base-dev libpng-dev libjpeg8-dev \
+                       libfreetype6-dev python-pip python-dev pkg-config \
+ && pip install --upgrade pip Cython ConfigParser requests numpy scipy pandas scikit-learn \
+                          matplotlib sqlalchemy seaborn ibis hadoopy hdfs pyhive impala py4j \
+                          sorlpy kafka-python flumelogger sparkts \
  && apt-get clean \
  && apt-get autoclean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*.deb
-
-# These libs still give errors when installing: json matplotlib
-# And these could not be found yet: h2o lightning
-RUN pip install numpy ConfigParser requests pandas scikit-learn sqlalchemy seaborn ibis hadoopy hdfs pyhive impala py4j solrpy kafka-python flumelogger
 
 ENV PATH /opt/anaconda/bin:$PATH
 
