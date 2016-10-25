@@ -18,7 +18,7 @@ RUN apt-key add /tmp/archive.key \
                        libfreetype6-dev python-pip python-dev pkg-config \
  && pip install --upgrade pip Cython ConfigParser requests numpy scipy pandas scikit-learn \
                           matplotlib sqlalchemy seaborn ibis hadoopy hdfs pyhive impala py4j \
-                          sorlpy kafka-python flumelogger sparkts \
+                          solrpy kafka-python flumelogger sparkts \
  && apt-get clean \
  && apt-get autoclean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*.deb
