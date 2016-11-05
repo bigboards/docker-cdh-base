@@ -15,10 +15,12 @@ RUN apt-key add /tmp/archive.key \
  && apt-get update \
  && apt-get install -y build-essential gfortran python libssl-dev libffi-dev libblas-dev \ 
                        liblapack-dev libatlas-base-dev libpng-dev libjpeg8-dev \
-                       libfreetype6-dev python-pip python-dev pkg-config \
- && pip install --upgrade pip Cython ConfigParser requests numpy scipy pandas scikit-learn \
-                          matplotlib sqlalchemy seaborn ibis hadoopy hdfs pyhive impala py4j \
-                          solrpy kafka-python flumelogger sparkts \
+                       libfreetype6-dev python-pip python-dev pkg-config git \
+ && pip install --upgrade pip \
+ && pip install --upgrade Cython ConfigParser requests numpy scipy pandas scikit-learn \
+                          matplotlib sqlalchemy seaborn ibis \
+ && pip install -e git+https://github.com/bwhite/hadoopy#egg=hadoopy \
+ && pip install --upgrade hdfs pyhive impala py4j solrpy kafka-python flumelogger sparkts \
  && apt-get clean \
  && apt-get autoclean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/apt/archives/*.deb
